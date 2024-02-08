@@ -1,4 +1,4 @@
-import { createMiaudeloDB } from '../repositories/url.repository.js'
+import { createMiaudeloDB } from '../repositories/cat.repository.js'
 
 export async function addMiaudelo(req, res) {
     const { photoLink } = req.body
