@@ -10,4 +10,7 @@ const configDatabase = {
 
 if (process.env.MODE === "prod") configDatabase.ssl = true
 
+console.log(process.env.DATABASE_URL)
+
 export const db = new Pool(configDatabase)
+
