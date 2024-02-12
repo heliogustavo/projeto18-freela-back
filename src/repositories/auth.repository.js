@@ -7,6 +7,6 @@ export function createSessionDB(userId, token) {
     )
 }
 
-export function findSessionDB(token) {
-    return db.query(`SELECT "userId" FROM sessions WHERE token=$1;`, [token])
+export function findUserIdDB(tokenEmail) {
+    return db.query(`SELECT "id" FROM users WHERE token=$1;`, [tokenEmail])
 }

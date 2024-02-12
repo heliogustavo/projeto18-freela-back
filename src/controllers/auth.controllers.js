@@ -1,7 +1,5 @@
-import { v4 as uuid } from "uuid"
 import bcrypt from "bcrypt"
 import { createUserDB, getUserByEmailDB } from "../repositories/user.repository.js"
-import { createSessionDB } from "../repositories/auth.repository.js"
 
 export async function signUp(req, res) {
     const { name, email, password, cpf, numberPhone } = req.body
@@ -28,10 +26,9 @@ export async function signIn(req, res) {
 
         const isPasswordCorrect = bcrypt.compareSync(password, user.rows[0].password)
         if (!isPasswordCorrect) return res.status(401).send({ message: "Senha incorreta!" })
-
-        const token = uuid()
-        await createSessionDB(user.rows[0].id, token)
-        res.send({ token })
+        const userId= user.rows[0].id
+        console.log(userId)
+        res.send({userId})
     } catch (err) {
         res.status(500).send(err.message)
     }

@@ -1,11 +1,10 @@
 import { createMiaudeloDB, editStatusPhotoCatDB, getAllMiaudelos, getOneMiaudeloDB } from '../repositories/cat.repository.js'
 
 export async function addMiaudelo(req, res) {
-    const { photoLink, features } = req.body
-    const { userId } = res.locals
+    const { photoLink, features, userId} = req.body
 
     try {
-        const { rows: [result] } = await createMiaudeloDB(photoLink, features)
+        const { rows: [result] } = await createMiaudeloDB(photoLink, features, userId)
         res.status(201).send(result)
     } catch (err) {
         res.status(500).send(err.message)
@@ -46,7 +45,7 @@ export async function getCurrentCat(req, res) {
     }
 }
 
-export async function editstatusphoto (req, res){
+export async function editStatusPhoto (req, res){
     const {photoId, statusPhoto}= req.body
     try {
         await editStatusPhotoCatDB(photoId, statusPhoto)
