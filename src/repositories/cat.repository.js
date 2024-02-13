@@ -38,11 +38,11 @@ export function getAllMiaudelos() {
     return db.query(`SELECT * FROM cats`)
 }
 
-export function editStatusPhotoCatDB(photoId, statusPhoto) {
+export function editStatusPhotoCatDB(userId, statusPhoto, id) {
     return db.query(
         `UPDATE cats
         SET available = $1
         WHERE id = $2`,
-        [statusPhoto, photoId]
+        [statusPhoto, id]
     )
 }

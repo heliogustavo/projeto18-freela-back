@@ -46,10 +46,11 @@ export async function getCurrentCat(req, res) {
 }
 
 export async function editStatusPhoto (req, res){
-    const {photoId, statusPhoto}= req.body
+    const {userId, statusPhoto}= req.body
+    const {id} = req.params
     try {
-        await editStatusPhotoCatDB(photoId, statusPhoto)
-        res.send({message: 'Disponibilidade do Miaudelo atualizado com sucesso.'})
+        await editStatusPhotoCatDB(userId, statusPhoto, id)
+        res.send({message: 'Disponibilidade do Miaudelo atualizado!'})
     } catch (err) {
         res.status(500).send(err.message)
     }

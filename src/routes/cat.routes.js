@@ -8,6 +8,6 @@ const catsRouter = Router()
 catsRouter.post("/addmialdelo", validateSchema(photoLinkSchema), addMiaudelo)
 catsRouter.get("/miaudeloslist", getMiaudelosList)
 catsRouter.get("/miaudelo/:id", getMiaudeloById)
-catsRouter.post("/editstatusphoto", validateSchema, editStatusPhoto)
+catsRouter.put("/editstatusphoto/:id", editStatusPhoto)
 
 export default catsRouter
